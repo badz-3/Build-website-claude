@@ -1,0 +1,29 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# Build output (rebuilt inside Docker)
+dist/
+
+# Go build artifacts
+backend/server
+backend/*.exe
+
+# Dev / editor files
+.env
+.env.*
+!backend/.env.example
+.git/
+.gitignore
+*.md
+
+# Screenshots & static dev files
+temporary screenshots/
+screenshot*.png
+serve.mjs
+screenshot.mjs
+index.static.html
+
+# OS
+.DS_Store
+Thumbs.db
