@@ -1,5 +1,19 @@
-const services = ['Web Development', 'Mobile Apps', 'UI/UX Design', 'Cloud & DevOps', 'AI Integration']
-const company  = ['About Us', 'Our Work', 'Careers', 'Blog']
+import { Link } from 'react-router-dom'
+
+const services = [
+  { label: 'Web Development', to: '/services' },
+  { label: 'Mobile Apps', to: '/services' },
+  { label: 'UI/UX Design', to: '/services' },
+  { label: 'Cloud & DevOps', to: '/services' },
+  { label: 'AI Integration', to: '/services' },
+]
+
+const company = [
+  { label: 'About Us', to: '/about' },
+  { label: 'Our Work', to: '/portfolio' },
+  { label: 'Blog', to: '/blog' },
+  { label: 'Contact', to: '/contact' },
+]
 
 export default function Footer() {
   return (
@@ -9,7 +23,7 @@ export default function Footer() {
 
           {/* Brand */}
           <div>
-            <a href="#" className="inline-flex items-center gap-2.5 no-underline mb-5">
+            <Link to="/" className="inline-flex items-center gap-2.5 no-underline mb-5">
               <div className="w-8 h-8 rounded-[7px] flex items-center justify-center" style={{ background: 'linear-gradient(135deg,#7c3aed,#ec4899)' }}>
                 <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
                   <path d="M3 10L8 5L13 10L18 5" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
@@ -17,7 +31,7 @@ export default function Footer() {
                 </svg>
               </div>
               <span className="font-display font-bold text-[17px] text-primary">NexusLab</span>
-            </a>
+            </Link>
             <p className="text-muted text-[14px] leading-[1.75] max-w-[280px]">
               We build bespoke digital products that drive growth. Your vision, engineered to perfection.
             </p>
@@ -47,7 +61,7 @@ export default function Footer() {
             <h4 className="text-[13px] font-semibold tracking-[0.08em] uppercase text-muted mb-5">Services</h4>
             <ul className="list-none flex flex-col gap-3 p-0 m-0">
               {services.map(s => (
-                <li key={s}><a href="#" className="footer-link">{s}</a></li>
+                <li key={s.label}><Link to={s.to} className="footer-link">{s.label}</Link></li>
               ))}
             </ul>
           </div>
@@ -57,7 +71,7 @@ export default function Footer() {
             <h4 className="text-[13px] font-semibold tracking-[0.08em] uppercase text-muted mb-5">Company</h4>
             <ul className="list-none flex flex-col gap-3 p-0 m-0">
               {company.map(c => (
-                <li key={c}><a href="#" className="footer-link">{c}</a></li>
+                <li key={c.label}><Link to={c.to} className="footer-link">{c.label}</Link></li>
               ))}
             </ul>
           </div>
@@ -74,7 +88,7 @@ export default function Footer() {
         </div>
 
         <div className="flex items-center justify-between pt-8 border-t border-accent/10">
-          <p className="text-[13px] text-muted m-0">© 2026 NexusLab. All rights reserved.</p>
+          <p className="text-[13px] text-muted m-0">&copy; 2026 NexusLab. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="footer-link text-[13px]">Privacy Policy</a>
             <a href="#" className="footer-link text-[13px]">Terms of Service</a>

@@ -1,34 +1,48 @@
 import { useEffect } from 'react'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import HeroSection from './components/HeroSection'
-import ClientLogos from './components/ClientLogos'
-import ServicesSection from './components/ServicesSection'
-import StatsSection from './components/StatsSection'
-import PortfolioSection from './components/PortfolioSection'
-import ProcessSection from './components/ProcessSection'
-import TechStack from './components/TechStack'
-import TestimonialsSection from './components/TestimonialsSection'
-import CTASection from './components/CTASection'
 import Footer from './components/Footer'
+import HomePage from './pages/HomePage'
+import AboutPage from './pages/AboutPage'
+import ServicesPage from './pages/ServicesPage'
+import PortfolioPage from './pages/PortfolioPage'
+import BlogPage from './pages/BlogPage'
+import ContactPage from './pages/ContactPage'
 
-export default function App() {
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
+
+function AppContent() {
   useEffect(() => {
     document.documentElement.classList.add('js-ready')
   }, [])
 
   return (
     <>
+      <ScrollToTop />
       <Navbar />
-      <HeroSection />
-      <ClientLogos />
-      <ServicesSection />
-      <StatsSection />
-      <PortfolioSection />
-      <ProcessSection />
-      <TechStack />
-      <TestimonialsSection />
-      <CTASection />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/portfolio" element={<PortfolioPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
       <Footer />
     </>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   )
 }
